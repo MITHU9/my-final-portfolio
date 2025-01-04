@@ -33,8 +33,8 @@ export default function Navbar() {
       className={`fixed w-full z-50 transition-all duration-300 ${
         scrolled && darkMode
           ? "bg-slate-800 "
-          : "text-white bg-slate-700 shadow-lg"
-      } ${darkMode ? "bg-slate-800 text-white" : "bg-transparent text-black"}`}
+          : "text-black bg-slate-400 shadow-lg"
+      } ${darkMode ? "bg-slate-800 text-white" : "bg-white text-black"}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -133,8 +133,12 @@ export default function Navbar() {
         className="md:hidden"
       >
         <div
-          className={`px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg
-          ${darkMode ? "bg-slate-800 text-white" : "bg-white text-black"}
+          className={`px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-lg
+          ${
+            darkMode && isOpen
+              ? "bg-slate-800 text-white"
+              : "bg-white text-black"
+          }
           `}
         >
           {navItems.map((item) => (
