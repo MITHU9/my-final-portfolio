@@ -1,11 +1,16 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Twitter, Download, Mail } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 
 export default function Hero() {
+  const { darkMode } = useTheme();
+
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center bg-gray-50"
+      className={`min-h-screen flex items-center justify-center ${
+        darkMode ? "bg-gray-900" : "bg-gray-50"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -14,13 +19,25 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2
+              className={`text-4xl font-bold ${
+                darkMode ? "text-gray-200" : "text-gray-900"
+              } mb-4`}
+            >
               Hi, I`m <span className="text-blue-600">Shahariar Mithu</span>
             </h2>
-            <h1 className="text-2xl md:text-3xl font-semibold text-gray-700 mb-6">
+            <h1
+              className={`text-2xl md:text-3xl font-semibold ${
+                darkMode ? "text-gray-300" : "text-gray-700"
+              } mb-6`}
+            >
               Frontend Developer | Web Enthusiast
             </h1>
-            <p className="text-gray-600 mb-8">
+            <p
+              className={`text-gray-600 ${
+                darkMode ? "text-white/50" : "text-gray-600"
+              } mb-8`}
+            >
               Passionate about creating beautiful and functional web experiences
             </p>
 
@@ -29,7 +46,9 @@ export default function Hero() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href="/resume.pdf"
-                className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className={`inline-flex items-center px-6 py-3 ${
+                  darkMode ? "bg-blue-600" : "bg-blue-600"
+                } text-white rounded-lg hover:bg-blue-700 transition-colors`}
                 download
               >
                 <Download className="w-5 h-5 mr-2" />
@@ -40,7 +59,9 @@ export default function Hero() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href="#contact"
-                className="inline-flex items-center px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
+                className={`inline-flex items-center px-6 py-3 border-2 ${
+                  darkMode ? "border-blue-600" : "border-blue-600"
+                } text-blue-600 rounded-lg hover:bg-blue-50 transition-colors`}
               >
                 <Mail className="w-5 h-5 mr-2" />
                 Contact Me
@@ -53,7 +74,9 @@ export default function Hero() {
                 href="https://github.com/MITHU9"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-blue-600 transition-colors"
+                className={`text-gray-600 hover:text-blue-600 transition-colors ${
+                  darkMode ? "text-white/50" : "text-gray-600"
+                }`}
               >
                 <Github className="w-6 h-6" />
               </motion.a>
@@ -62,7 +85,9 @@ export default function Hero() {
                 href="https://www.linkedin.com/in/shahariar-mithu-31a5601b6/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-blue-600 transition-colors"
+                className={`text-gray-600 hover:text-blue-600 transition-colors ${
+                  darkMode ? "text-white/50" : "text-gray-600"
+                }`}
               >
                 <Linkedin className="w-6 h-6" />
               </motion.a>
@@ -71,7 +96,9 @@ export default function Hero() {
                 href="https://x.com/MithuShahariar"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-blue-600 transition-colors"
+                className={`text-gray-600 hover:text-blue-600 transition-colors ${
+                  darkMode ? "text-white/50" : "text-gray-600"
+                }`}
               >
                 <Twitter className="w-6 h-6" />
               </motion.a>
