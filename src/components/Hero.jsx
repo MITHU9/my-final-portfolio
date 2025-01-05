@@ -62,18 +62,23 @@ export default function Hero() {
               </motion.span>
             </h2>
             <h1
-              className={`text-2xl md:text-3xl font-semibold ${
-                darkMode ? "text-gray-300" : "text-gray-700"
+              className={`text-2xl md:text-3xl font-semibold bg-clip-text text-transparent ${
+                darkMode
+                  ? "bg-gradient-to-r from-gray-400 via-yellow-500 to-purple-500"
+                  : "bg-gradient-to-r from-purple-500 via-pink-500 to-red-500"
               } mb-6`}
             >
-              Frontend Developer | Web Enthusiast
+              <i>Fullstack Developer</i> | Web Enthusiast
             </h1>
             <p
-              className={`text-gray-600 ${
+              className={`text-gray-600 text-lg ${
                 darkMode ? "text-white/50" : "text-gray-600"
               } mb-8`}
             >
-              Passionate about creating beautiful and functional web experiences
+              <i>
+                Passionate about creating beautiful and functional web
+                experiences with the latest technologies.
+              </i>
             </p>
 
             <div className="flex flex-wrap gap-4 mb-8">
@@ -94,9 +99,11 @@ export default function Hero() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href="#contact"
-                className={`inline-flex items-center px-6 py-3 border-2 ${
-                  darkMode ? "border-blue-600" : "border-blue-600"
-                } text-blue-600 rounded-lg hover:bg-blue-50 transition-colors`}
+                className={`inline-flex items-center px-6 py-3 text-blue-600 rounded-lg border-2 border-transparent hover:bg-blue-200 transition-colors`}
+                style={{
+                  borderImage:
+                    "linear-gradient(to right, #3b82f6, #6366f1, #8b5cf6) 1",
+                }}
               >
                 <Mail className="w-5 h-5 mr-2" />
                 Contact Me
@@ -109,9 +116,13 @@ export default function Hero() {
                 href="https://github.com/MITHU9"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`text-gray-600 hover:text-blue-600 transition-colors ${
-                  darkMode ? "text-white/50" : "text-gray-600"
-                }`}
+                className={`inline-flex items-center justify-center p-3 border-2 border-transparent rounded-full hover:text-blue-500 transition-colors  ${
+                  darkMode ? "text-blue-50" : "text-gray-800"
+                } `}
+                style={{
+                  borderImage:
+                    "linear-gradient(to right, #3b82f6, #6366f1, #8b5cf6) 1", // Gradient border
+                }}
               >
                 <Github className="w-6 h-6" />
               </motion.a>
@@ -120,9 +131,13 @@ export default function Hero() {
                 href="https://www.linkedin.com/in/shahariar-mithu-31a5601b6/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`text-gray-600 hover:text-blue-600 transition-colors ${
-                  darkMode ? "text-white/50" : "text-gray-600"
-                }`}
+                className={`inline-flex items-center justify-center p-3 border-2 border-transparent rounded-full hover:text-blue-500 transition-colors  ${
+                  darkMode ? "text-blue-50" : "text-gray-800"
+                } `}
+                style={{
+                  borderImage:
+                    "linear-gradient(to right, #3b82f6, #6366f1, #8b5cf6) 1",
+                }}
               >
                 <Linkedin className="w-6 h-6" />
               </motion.a>
@@ -131,9 +146,13 @@ export default function Hero() {
                 href="https://x.com/MithuShahariar"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`text-gray-600 hover:text-blue-600 transition-colors ${
-                  darkMode ? "text-white/50" : "text-gray-600"
-                }`}
+                className={`inline-flex items-center justify-center p-3 border-2 border-transparent rounded-full hover:text-blue-500 transition-colors  ${
+                  darkMode ? "text-blue-50" : "text-gray-800"
+                } `}
+                style={{
+                  borderImage:
+                    "linear-gradient(to right, #3b82f6, #6366f1, #8b5cf6) 1",
+                }}
               >
                 <Twitter className="w-6 h-6" />
               </motion.a>

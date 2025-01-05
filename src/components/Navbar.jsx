@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-scroll";
-import { Moon, Sun, Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
+import { FiHome, FiUser, FiCode, FiFolder, FiMail } from "react-icons/fi";
+import { Moon, Sun, Menu, X } from "lucide-react";
 
 const navItems = [
-  { name: "Home", to: "home" },
-  { name: "About", to: "about" },
-  { name: "Skills", to: "skills" },
-  { name: "Projects", to: "projects" },
-  { name: "Contact", to: "contact" },
+  { name: "Home", to: "home", icon: <FiHome size={20} /> },
+  { name: "About", to: "about", icon: <FiUser size={20} /> },
+  { name: "Skills", to: "skills", icon: <FiCode size={20} /> },
+  { name: "Projects", to: "projects", icon: <FiFolder size={20} /> },
+  { name: "Contact", to: "contact", icon: <FiMail size={20} /> },
 ];
 
 export default function Navbar() {
@@ -31,53 +32,29 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled && darkMode
-          ? "bg-slate-800 "
-          : "text-black bg-slate-400 shadow-lg"
-      } ${darkMode ? "bg-slate-800 text-white" : "bg-white text-black"}`}
+        scrolled && darkMode ? "bg-slate-800 shadow-lg" : "shadow-lg"
+      } ${darkMode ? "text-white" : "text-black"}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
+          {/* Logo */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="flex-shrink-0 font-bold text-2xl"
+            className="relative flex-shrink-0 font-bold text-2xl"
           >
-            {/* Logo */}
-            <motion.div
-              className="relative flex items-center justify-center w-12 h-12 bg-gradient-to-r from-red-800 via-blue-600 to-gray-600 rounded-lg shadow-lg overflow-hidden"
-              initial={{ scale: 0.8, rotate: 0 }}
-              animate={{ scale: 1, rotate: 360 }}
-              transition={{ duration: 2, ease: "easeInOut", repeat: Infinity }}
-            >
-              {/* Background Circle Animation */}
-              <motion.div
-                className="absolute w-16 h-16 bg-white opacity-20 rounded-full"
-                animate={{ scale: [1, 1.5, 1], opacity: [0.2, 0.4, 0.2] }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              ></motion.div>
+            {/* Animated Gradient Border */}
+            <div className="absolute inset-[-1px] rounded-lg bg-gradient-to-r from-red-700 via-yellow-600 to-pink-950 animate-gradientMove"></div>
 
-              {/* SM Letters */}
-              <motion.span
-                className="text-white/90 font-extrabold text-lg"
-                initial={{ y: -10 }}
-                animate={{ y: [0, -5, 0] }}
-                transition={{
-                  duration: 1,
-                  ease: "easeInOut",
-                  repeat: Infinity,
-                }}
-              >
-                SM
-              </motion.span>
-            </motion.div>
+            {/* Inner Text */}
+            <div className="relative bg-white dark:bg-black px-4 py-2 rounded-lg">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r text-2xl from-red-500 via-blue-500 to-yellow-600">
+                <i>SM</i>
+              </span>
+            </div>
           </motion.div>
 
-          {/* Centered Menu (Desktop) */}
+          {/* Desktop Menu */}
           <div className="hidden md:flex-1 md:flex justify-center items-center">
             <div className="ml-10 flex items-baseline space-x-4">
               {navItems.map((item) => (
@@ -88,9 +65,16 @@ export default function Navbar() {
                   smooth={true}
                   offset={-70}
                   duration={500}
-                  className="cursor-pointer px-3 py-2 rounded-md text-sm font-medium hover:text-blue-600 transition-colors"
+                  activeClass="active"
+                  className={
+                    "cursor-pointer px-4 py-2 flex items-center space-x-2 rounded-md text-sm font-medium transition-colors relative group"
+                  }
                 >
-                  {item.name}
+                  <span className="group-hover:text-blue-600 group-active:text-blue-600">
+                    {item.icon}
+                  </span>
+                  <span>{item.name}</span>
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-green-500 to-purple-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
                 </Link>
               ))}
             </div>
@@ -113,8 +97,9 @@ export default function Navbar() {
             <div className="md:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 focus:outline-none
-                  ${darkMode ? "text-white" : "text-black"}`}
+                className={`inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 focus:outline-none ${
+                  darkMode ? "text-white" : "text-black"
+                }`}
               >
                 {isOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -133,13 +118,11 @@ export default function Navbar() {
         className="md:hidden"
       >
         <div
-          className={`px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-lg
-          ${
+          className={`px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-lg ${
             darkMode && isOpen
               ? "bg-slate-800 text-white"
               : "bg-white text-black"
-          }
-          `}
+          }`}
         >
           {navItems.map((item) => (
             <Link
@@ -149,10 +132,12 @@ export default function Navbar() {
               smooth={true}
               offset={-70}
               duration={500}
-              className="cursor-pointer block px-3 py-2 rounded-md text-base font-medium hover:text-blue-600 transition-colors"
+              activeClass="active"
+              className="cursor-pointer block px-3 py-2 flex items-center space-x-2 rounded-md text-base font-medium hover:text-blue-600 transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              {item.name}
+              <span>{item.icon}</span>
+              <span>{item.name}</span>
             </Link>
           ))}
         </div>
