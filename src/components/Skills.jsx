@@ -91,10 +91,10 @@ export default function Skills() {
               darkMode ? "text-white" : "text-gray-900"
             }`}
           >
-            Skills
+            Skills & Tools
           </h2>
           <div
-            className={`mt-2 h-1 w-20 ${
+            className={`mt-2 h-1 w-32 ${
               darkMode ? "bg-blue-400" : "bg-blue-600"
             } mx-auto`}
           ></div>

@@ -5,6 +5,25 @@ import { useTheme } from "../context/ThemeContext";
 export default function Hero() {
   const { darkMode } = useTheme();
 
+  const name = "Shahariar Mithu";
+
+  const containerVariants = {
+    visible: () => ({
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1, // Typing speed
+        repeat: Infinity, // Infinite loop
+        repeatType: "loop", // Loop without reversing
+        delayChildren: 0.5, // Delay before restarting the loop
+      },
+    }),
+  };
+
+  const characterVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <section
       id="home"
@@ -24,7 +43,23 @@ export default function Hero() {
                 darkMode ? "text-gray-200" : "text-gray-900"
               } mb-4`}
             >
-              Hi, I`m <span className="text-blue-600">Shahariar Mithu</span>
+              Hi, I`m{" "}
+              <motion.span
+                className="text-blue-600 inline-flex"
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                {name.split("").map((char, index) => (
+                  <motion.span
+                    key={index}
+                    className="inline-block"
+                    variants={characterVariants}
+                  >
+                    {char === " " ? "\u00A0" : char}
+                  </motion.span>
+                ))}
+              </motion.span>
             </h2>
             <h1
               className={`text-2xl md:text-3xl font-semibold ${

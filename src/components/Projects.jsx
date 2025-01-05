@@ -112,13 +112,19 @@ export default function Projects() {
               } 
               transform transition-all duration-300 ease-in-out hover:scale-105 hover:rotate-2 hover:shadow-2xl hover:translate-y-[-5px] hover:ring-4 hover:ring-blue-500 hover:ring-opacity-50`}
             >
-              <div className="relative h-48">
+              {/* Image Animation on Hover */}
+              <motion.div
+                className="relative h-48"
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.3 }}
+              >
                 <img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover transition-all duration-300 ease-in-out"
                 />
-              </div>
+              </motion.div>
+
               <div className="p-6 relative">
                 <h3
                   className={`text-xl font-semibold ${
@@ -207,7 +213,7 @@ export default function Projects() {
                       </h4>
                       <p
                         className={`text-gray-600 ${
-                          darkMode ? "text-gray-300" : ""
+                          darkMode ? "text-white/60" : ""
                         }`}
                       >
                         {selectedProject.description}
@@ -248,7 +254,7 @@ export default function Projects() {
                       </h4>
                       <p
                         className={`text-gray-600 ${
-                          darkMode ? "text-gray-300" : ""
+                          darkMode ? "text-white/60" : ""
                         }`}
                       >
                         {selectedProject.challenges}
@@ -265,7 +271,7 @@ export default function Projects() {
                       </h4>
                       <p
                         className={`text-gray-600 ${
-                          darkMode ? "text-gray-300" : ""
+                          darkMode ? "text-white/60" : ""
                         }`}
                       >
                         {selectedProject.improvements}
@@ -294,7 +300,7 @@ export default function Projects() {
                           darkMode
                             ? "border-gray-400 text-gray-300"
                             : "border-gray-900 text-gray-900"
-                        } rounded-lg hover:bg-gray-100 transition-colors`}
+                        } rounded-lg hover:bg-gray-100 hover:text-gray-600 transition-colors`}
                       >
                         <Github size={18} className="mr-2" />
                         View Code
