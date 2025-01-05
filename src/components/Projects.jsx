@@ -4,6 +4,10 @@ import { ExternalLink, Github, X } from "lucide-react";
 import project1 from "/project1.png";
 import project2 from "/project2.png";
 import project3 from "/project4.png";
+import project4 from "/project3.png";
+import project5 from "/project5.png";
+import project6 from "/project6.png";
+
 import { useTheme } from "../context/ThemeContext";
 
 const projects = [
@@ -65,6 +69,50 @@ const projects = [
       "Working with multiple APIs and creating smooth data visualizations was challenging. I implemented proper error handling and loading states to improve user experience.",
     improvements:
       "Future improvements include adding a review system, implementing a notification system, and adding a mobile app.",
+  },
+  {
+    id: 4,
+    title: "Eco Ventures",
+    image: project4,
+    brief: "A Eco Adventures app built with React",
+    description:
+      "A platform that allows users for seeing adventures places and weather of that place. Features include user authentication, and adventure details page. User can update their profile.",
+    technologies: ["React", "tailwindCSS", "Firebase"],
+    liveLink: "https://eco-adventure-by-mithu9.netlify.app/",
+    githubLink: "https://github.com/MITHU9/eco-ventures",
+    challenges:
+      " Implementing user authentication and update user functionality was challenging . I used Firebase Authentication.",
+    improvements:
+      "Future improvements include adding a review system, implementing a notification system, and adding backend to this project.",
+  },
+  {
+    id: 5,
+    title: "youtube clone",
+    image: project5,
+    brief: "A responsive YouTube clone built with React",
+    description:
+      "A YouTube clone that features video playback,and category wise data fetching, and video recommendation  . The app is responsive and mobile-friendly.",
+    technologies: ["React", "CSS", "YouTube API"],
+    liveLink: "https://youtube-clone-by-mithu.netlify.app/",
+    githubLink: "https://github.com/MITHU9/youtube-clone-project",
+    challenges:
+      "Fetching and displaying data from the YouTube API was challenging. ",
+    improvements:
+      "Future improvements including search functionality, implementing a notification system, and adding a mobile app.",
+  },
+  {
+    id: 6,
+    title: "Some Practice Projects",
+    image: project6,
+    brief: "Some practice projects",
+    description:
+      "Some practice projects that I have done. These projects are built with React, tailwindCSS, and API.",
+    technologies: ["React", "CSS", "API"],
+    liveLink: "https://react-interview-question-by-mithu.netlify.app/",
+    githubLink: "https://github.com/MITHU9/React-projects-for-interview",
+    challenges: "Fetching and displaying data from the API was challenging. ",
+    improvements:
+      "Every project has some improvements. I will add more features to these projects.",
   },
 ];
 

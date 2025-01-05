@@ -11,10 +11,10 @@ export default function Hero() {
     visible: () => ({
       opacity: 1,
       transition: {
-        staggerChildren: 0.1, // Typing speed
-        repeat: Infinity, // Infinite loop
-        repeatType: "loop", // Loop without reversing
-        delayChildren: 0.5, // Delay before restarting the loop
+        staggerChildren: 0.1,
+        repeat: Infinity,
+        repeatType: "loop",
+        delayChildren: 0.5,
       },
     }),
   };

@@ -2,13 +2,11 @@ import { motion } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
 import {
   FaCss3Alt,
-  FaDatabase,
   FaDocker,
   FaGitAlt,
   FaHtml5,
   FaJs,
   FaNodeJs,
-  FaPython,
   FaReact,
 } from "react-icons/fa";
 import {
@@ -19,6 +17,10 @@ import {
   SiMongodb,
   SiPostgresql,
 } from "react-icons/si";
+// Placeholder for C and C++ icons (replace with actual icons if you find or use images)
+import { FaCuttlefish } from "react-icons/fa"; // Example icon (can replace with your choice for C)
+import { FaCogs } from "react-icons/fa"; // Example icon (can replace with your choice for C++)
+import Marquee from "react-fast-marquee";
 
 const skills = [
   {
@@ -62,8 +64,6 @@ export default function Skills() {
     { name: "CSS", icon: <FaCss3Alt size={32} /> },
     { name: "Git", icon: <FaGitAlt size={32} /> },
     { name: "JavaScript", icon: <FaJs size={32} /> },
-    { name: "Python", icon: <FaPython size={32} /> },
-    { name: "Database", icon: <FaDatabase size={32} /> },
     { name: "Nextjs", icon: <SiNextdotjs size={32} /> },
     { name: "TypeScript", icon: <SiTypescript size={32} /> },
     { name: "Docker", icon: <FaDocker size={32} /> },
@@ -71,6 +71,9 @@ export default function Skills() {
     { name: "Express", icon: <SiExpress size={32} /> },
     { name: "MongoDB", icon: <SiMongodb size={32} /> },
     { name: "PostgreSQL", icon: <SiPostgresql size={32} /> },
+    // Add C and C++ icons
+    { name: "C", icon: <FaCuttlefish size={32} /> }, // Placeholder, replace with your C icon
+    { name: "C++", icon: <FaCogs size={32} /> }, // Placeholder, replace with your C++ icon
   ];
 
   return (
@@ -100,60 +103,61 @@ export default function Skills() {
           ></div>
         </motion.div>
 
-        {/* First scrolling animation (Left to Right) */}
+        {/* First scrolling animation (Left to Right) using react-fast-marquee */}
         <div className="mt-12 text-center">
-          <div className="relative overflow-hidden">
-            <div className="flex space-x-12 animate-marquee-left-to-right">
-              {tools.map((tool, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col items-center justify-center space-y-2"
+          <Marquee speed={50} gradient={false} pauseOnHover={true}>
+            {tools.map((tool, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center justify-center space-y-2 mr-6" // Consistent gap with margin-right
+              >
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  className="p-4 bg-gradient-to-r from-blue-500 via-purple-600 to-red-500 dark:bg-gradient-to-r dark:from-blue-700 dark:via-purple-800 dark:to-red-700 rounded-full text-white"
                 >
-                  <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    className="p-4 bg-gradient-to-r from-blue-500 via-purple-600 to-red-500 dark:bg-gradient-to-r dark:from-blue-700 dark:via-purple-800 dark:to-red-700 rounded-full text-white"
-                  >
-                    {tool.icon}
-                  </motion.div>
-                  <span
-                    className={`text-sm font-medium ${
-                      darkMode ? "text-gray-300" : "text-gray-700"
-                    }`}
-                  >
-                    {tool.name}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
+                  {tool.icon}
+                </motion.div>
+                <span
+                  className={`text-sm font-medium ${
+                    darkMode ? "text-gray-300" : "text-gray-700"
+                  }`}
+                >
+                  {tool.name}
+                </span>
+              </div>
+            ))}
+          </Marquee>
         </div>
 
-        {/* Second scrolling animation (Right to Left) */}
+        {/* Second scrolling animation (Right to Left) using react-fast-marquee */}
         <div className="mt-12 text-center">
-          <div className="relative overflow-hidden">
-            <div className="flex space-x-12 animate-marquee-right-to-left">
-              {tools.map((tool, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col items-center justify-center space-y-2"
+          <Marquee
+            direction="right"
+            speed={50}
+            gradient={false}
+            pauseOnHover={true}
+          >
+            {tools.map((tool, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center justify-center space-y-2 mr-6" // Consistent gap with margin-right
+              >
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  className="p-4 bg-gradient-to-l from-blue-500 via-purple-600 to-red-500 dark:bg-gradient-to-l dark:from-blue-700 dark:via-purple-800 dark:to-red-700 rounded-full text-white"
                 >
-                  <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    className="p-4 bg-gradient-to-l from-blue-500 via-purple-600 to-red-500 dark:bg-gradient-to-l dark:from-blue-700 dark:via-purple-800 dark:to-red-700 rounded-full text-white"
-                  >
-                    {tool.icon}
-                  </motion.div>
-                  <span
-                    className={`text-sm font-medium ${
-                      darkMode ? "text-gray-300" : "text-gray-700"
-                    }`}
-                  >
-                    {tool.name}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
+                  {tool.icon}
+                </motion.div>
+                <span
+                  className={`text-sm font-medium ${
+                    darkMode ? "text-gray-300" : "text-gray-700"
+                  }`}
+                >
+                  {tool.name}
+                </span>
+              </div>
+            ))}
+          </Marquee>
         </div>
 
         <div className="grid grid-cols-1 mt-8 md:grid-cols-3 gap-8">
@@ -188,7 +192,7 @@ export default function Skills() {
                       </span>
                       <span
                         className={`text-gray-600 ${
-                          darkMode ? "text-gray-400" : ""
+                          darkMode ? "text-white/50" : ""
                         }`}
                       >
                         {skill.level}%
