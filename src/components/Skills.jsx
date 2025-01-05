@@ -16,10 +16,10 @@ import {
   SiExpress,
   SiMongodb,
   SiPostgresql,
+  SiCplusplus,
 } from "react-icons/si";
-// Placeholder for C and C++ icons (replace with actual icons if you find or use images)
-import { FaCuttlefish } from "react-icons/fa"; // Example icon (can replace with your choice for C)
-import { FaCogs } from "react-icons/fa"; // Example icon (can replace with your choice for C++)
+
+import { FaCuttlefish } from "react-icons/fa";
 import Marquee from "react-fast-marquee";
 
 const skills = [
@@ -71,9 +71,8 @@ export default function Skills() {
     { name: "Express", icon: <SiExpress size={32} /> },
     { name: "MongoDB", icon: <SiMongodb size={32} /> },
     { name: "PostgreSQL", icon: <SiPostgresql size={32} /> },
-    // Add C and C++ icons
-    { name: "C", icon: <FaCuttlefish size={32} /> }, // Placeholder, replace with your C icon
-    { name: "C++", icon: <FaCogs size={32} /> }, // Placeholder, replace with your C++ icon
+    { name: "C", icon: <FaCuttlefish size={32} /> },
+    { name: "C++", icon: <SiCplusplus size={32} /> },
   ];
 
   return (

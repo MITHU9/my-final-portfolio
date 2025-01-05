@@ -98,7 +98,7 @@ const projects = [
     challenges:
       "Fetching and displaying data from the YouTube API was challenging. ",
     improvements:
-      "Future improvements including search functionality, implementing a notification system, and adding a mobile app.",
+      "Future improvements including search functionality, implementing a notification system, and add backend to this project.",
   },
   {
     id: 6,
