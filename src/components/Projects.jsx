@@ -156,7 +156,7 @@ export default function Projects() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className={`rounded-lg shadow-lg overflow-hidden ${
-                darkMode ? "bg-gray-800" : "bg-white"
+                darkMode ? "bg-gray-900" : "bg-white"
               } 
               transform transition-all duration-300 ease-in-out hover:scale-105 hover:rotate-2 hover:shadow-2xl hover:translate-y-[-5px] hover:ring-4 hover:ring-blue-500 hover:ring-opacity-50`}
             >

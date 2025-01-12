@@ -17,6 +17,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { darkMode, toggleDarkMode } = useTheme();
+  const [active, setActive] = useState("Home");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,8 +33,8 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled && darkMode ? "bg-slate-800 shadow-lg" : "shadow-lg"
-      } ${darkMode ? "text-white" : "text-black"}`}
+        scrolled ? " shadow-lg" : " "
+      } ${darkMode ? "text-white" : "text-black "}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -59,6 +60,7 @@ export default function Navbar() {
             <div className="ml-10 flex items-baseline space-x-4">
               {navItems.map((item) => (
                 <Link
+                  onClick={() => setActive(item.name)}
                   key={item.name}
                   to={item.to}
                   spy={true}
@@ -66,15 +68,24 @@ export default function Navbar() {
                   offset={-70}
                   duration={500}
                   activeClass="active"
-                  className={
-                    "cursor-pointer px-4 py-2 flex items-center space-x-2 rounded-md text-sm font-medium transition-colors relative group"
-                  }
+                  className={`cursor-pointer px-4 py-2 flex items-center space-x-2 rounded-md text-sm font-medium transition-colors relative group ${
+                    active === item.name
+                      ? "text-blue-600"
+                      : "text-gray-500 dark:text-gray-300"
+                  }`}
                 >
                   <span className="group-hover:text-blue-600 group-active:text-blue-600">
                     {item.icon}
                   </span>
                   <span>{item.name}</span>
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-green-500 to-purple-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                  {
+                    // Active Indicator
+                    active === item.name ? (
+                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-green-500 to-purple-500 scale-x-100 transition-transform origin-left"></span>
+                    ) : (
+                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-green-500 to-purple-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                    )
+                  }
                 </Link>
               ))}
             </div>
