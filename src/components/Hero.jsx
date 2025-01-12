@@ -85,7 +85,7 @@ export default function Hero() {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="/resume.pdf"
+                href="/resume_mithu.pdf"
                 className={`inline-flex items-center px-6 py-3 ${
                   darkMode ? "bg-blue-600" : "bg-blue-600"
                 } text-white rounded-lg hover:bg-blue-700 transition-colors`}
