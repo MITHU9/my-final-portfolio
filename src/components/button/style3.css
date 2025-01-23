@@ -1,7 +1,7 @@
 .button2 {
   transition: all 0.5s;
   font-size: 17px;
-  padding: 1ch 2ch;
+  padding: 1.5ch 4ch;
   background-color: rgb(6, 103, 168);
   color: #e4d6d6c1;
   cursor: pointer;

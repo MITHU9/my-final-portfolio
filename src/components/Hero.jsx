@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Download, Mail } from "lucide-react";
+import { Download, Mail } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 import Button2 from "./button/Button2";
 import Button3 from "./button/Button3";
@@ -85,32 +85,29 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-wrap gap-4 mb-8">
-              <Button2
+              <motion.a
                 text="Download Resume"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href="/resume.pdf"
-                className={`inline-flex items-center px-6 py-3 ${
-                  darkMode ? "bg-blue-600" : "bg-blue-600"
-                } text-white rounded-lg hover:bg-blue-700 transition-colors`}
                 download
               >
-                <Download className="w-5 h-5 mr-2" />
-              </Button2>
+                <Button2 text={"Download Resume"}>
+                  <Download className="w-5 h-5 mr-2" />
+                </Button2>
+              </motion.a>
 
-              <Button3
+              <motion.a
                 text={"Contact Me"}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href="#contact"
-                className={`inline-flex items-center px-6 py-3 text-blue-600 rounded-lg border-2 border-transparent hover:bg-blue-200 transition-colors`}
-                style={{
-                  borderImage:
-                    "linear-gradient(to right, #3b82f6, #6366f1, #8b5cf6) 1",
-                }}
+                className="cursor-pointer"
               >
-                <Mail className="w-5 h-5 mr-2" />
-              </Button3>
+                <Button3 text={"Contact Me"}>
+                  <Mail className="w-5 h-5 mr-2" />
+                </Button3>
+              </motion.a>
             </div>
 
             <div className="flex space-x-4">
