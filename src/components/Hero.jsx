@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Twitter, Download, Mail } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
+import Button2 from "./button/Button2";
+import Button3 from "./button/Button3";
+import Social from "./social-icon/Social";
 
 export default function Hero() {
   const { darkMode } = useTheme();
@@ -82,20 +85,21 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-wrap gap-4 mb-8">
-              <motion.a
+              <Button2
+                text="Download Resume"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="/resume_mithu.pdf"
+                href="/resume.pdf"
                 className={`inline-flex items-center px-6 py-3 ${
                   darkMode ? "bg-blue-600" : "bg-blue-600"
                 } text-white rounded-lg hover:bg-blue-700 transition-colors`}
                 download
               >
                 <Download className="w-5 h-5 mr-2" />
-                Download Resume
-              </motion.a>
+              </Button2>
 
-              <motion.a
+              <Button3
+                text={"Contact Me"}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href="#contact"
@@ -106,56 +110,11 @@ export default function Hero() {
                 }}
               >
                 <Mail className="w-5 h-5 mr-2" />
-                Contact Me
-              </motion.a>
+              </Button3>
             </div>
 
             <div className="flex space-x-4">
-              <motion.a
-                whileHover={{ y: -3 }}
-                href="https://github.com/MITHU9"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`inline-flex items-center justify-center p-3 border-2 border-transparent rounded-full hover:text-blue-500 transition-colors  ${
-                  darkMode ? "text-blue-50" : "text-gray-800"
-                } `}
-                style={{
-                  borderImage:
-                    "linear-gradient(to right, #3b82f6, #6366f1, #8b5cf6) 1", // Gradient border
-                }}
-              >
-                <Github className="w-6 h-6" />
-              </motion.a>
-              <motion.a
-                whileHover={{ y: -3 }}
-                href="https://www.linkedin.com/in/shahariar-mithu-31a5601b6/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`inline-flex items-center justify-center p-3 border-2 border-transparent rounded-full hover:text-blue-500 transition-colors  ${
-                  darkMode ? "text-blue-50" : "text-gray-800"
-                } `}
-                style={{
-                  borderImage:
-                    "linear-gradient(to right, #3b82f6, #6366f1, #8b5cf6) 1",
-                }}
-              >
-                <Linkedin className="w-6 h-6" />
-              </motion.a>
-              <motion.a
-                whileHover={{ y: -3 }}
-                href="https://x.com/MithuShahariar"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`inline-flex items-center justify-center p-3 border-2 border-transparent rounded-full hover:text-blue-500 transition-colors  ${
-                  darkMode ? "text-blue-50" : "text-gray-800"
-                } `}
-                style={{
-                  borderImage:
-                    "linear-gradient(to right, #3b82f6, #6366f1, #8b5cf6) 1",
-                }}
-              >
-                <Twitter className="w-6 h-6" />
-              </motion.a>
+              <Social />
             </div>
           </motion.div>
 

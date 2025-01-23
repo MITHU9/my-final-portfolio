@@ -9,6 +9,7 @@ import project5 from "/project5.png";
 import project6 from "/project6.png";
 
 import { useTheme } from "../context/ThemeContext";
+import Button from "./button/Button";
 
 const projects = [
   {
@@ -155,7 +156,7 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`rounded-lg shadow-lg overflow-hidden ${
+              className={` rounded-lg shadow-lg overflow-hidden ${
                 darkMode ? "bg-gray-900" : "bg-white"
               } 
               transform transition-all duration-300 ease-in-out hover:scale-105 hover:rotate-2 hover:shadow-2xl hover:translate-y-[-5px] hover:ring-4 hover:ring-blue-500 hover:ring-opacity-50`}
@@ -327,7 +328,8 @@ export default function Projects() {
                     </div>
 
                     <div className="flex gap-4 pt-4">
-                      <a
+                      <Button
+                        text={"Live Demo"}
                         href={selectedProject.liveLink}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -338,9 +340,9 @@ export default function Projects() {
                         } rounded-lg hover:bg-blue-700 transition-colors`}
                       >
                         <ExternalLink size={18} className="mr-2" />
-                        Live Demo
-                      </a>
-                      <a
+                      </Button>
+                      <Button
+                        text="View Code"
                         href={selectedProject.githubLink}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -351,8 +353,7 @@ export default function Projects() {
                         } rounded-lg hover:bg-gray-100 hover:text-gray-600 transition-colors`}
                       >
                         <Github size={18} className="mr-2" />
-                        View Code
-                      </a>
+                      </Button>
                     </div>
                   </div>
                 </div>
