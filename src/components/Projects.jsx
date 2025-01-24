@@ -4,9 +4,9 @@ import { ExternalLink, Github, X } from "lucide-react";
 import project1 from "/project1.png";
 import project2 from "/project2.png";
 import project3 from "/project4.png";
-import project4 from "/project3.png";
 import project5 from "/project5.png";
-import project6 from "/project6.png";
+import project7 from "/project7.png";
+import project8 from "/project8.png";
 
 import { useTheme } from "../context/ThemeContext";
 import Button from "./button/Button";
@@ -16,7 +16,7 @@ const projects = [
     id: 1,
     title: "gadget heaven",
     image: project1,
-    brief: "An e-commerce platform for gadgets",
+    brief: "An e-commerce platform for gadgets built with React and Firebase",
     description:
       "This e-commerce platform features user authentication, product management, shopping cart functionality",
     technologies: ["React", "tailwindCSS", "Firebase"],
@@ -31,7 +31,7 @@ const projects = [
     id: 2,
     title: "Movie Portal",
     image: project2,
-    brief: "Movie portal built with React and Node.js",
+    brief: "Movie portal built with React and Node.js with MongoDB",
     description:
       "A platform that allows users to search for movies, view movie details, and add movies to their Favlist. Features include user authentication, and user-specific Favlist.",
     technologies: [
@@ -73,24 +73,9 @@ const projects = [
   },
   {
     id: 4,
-    title: "Eco Ventures",
-    image: project4,
-    brief: "A Eco Adventures app built with React",
-    description:
-      "A platform that allows users for seeing adventures places and weather of that place. Features include user authentication, and adventure details page. User can update their profile.",
-    technologies: ["React", "tailwindCSS", "Firebase"],
-    liveLink: "https://eco-adventure-by-mithu9.netlify.app/",
-    githubLink: "https://github.com/MITHU9/eco-ventures",
-    challenges:
-      " Implementing user authentication and update user functionality was challenging . I used Firebase Authentication.",
-    improvements:
-      "Future improvements include adding a review system, implementing a notification system, and adding backend to this project.",
-  },
-  {
-    id: 5,
     title: "youtube clone",
     image: project5,
-    brief: "A responsive YouTube clone built with React",
+    brief: "A responsive YouTube clone built with React and YouTube API",
     description:
       "A YouTube clone that features video playback,and category wise data fetching, and video recommendation  . The app is responsive and mobile-friendly.",
     technologies: ["React", "CSS", "YouTube API"],
@@ -102,18 +87,50 @@ const projects = [
       "Future improvements including search functionality, implementing a notification system, and add backend to this project.",
   },
   {
-    id: 6,
-    title: "Some Practice Projects",
-    image: project6,
-    brief: "Some practice projects",
+    id: 5,
+    title: "ForumHub - A Forum Website",
+    image: project7,
+    brief: "A forum website built with React and Node.js with MongoDB",
     description:
-      "Some practice projects that I have done. These projects are built with React, tailwindCSS, and API.",
-    technologies: ["React", "CSS", "API"],
-    liveLink: "https://react-interview-question-by-mithu.netlify.app/",
-    githubLink: "https://github.com/MITHU9/React-projects-for-interview",
-    challenges: "Fetching and displaying data from the API was challenging. ",
+      "A platform that allows users to create and join forums, post questions, and answer questions. Features include user authentication, and user-specific data.",
+    technologies: [
+      "React",
+      "tailwindCSS",
+      "NodeJs",
+      "Express",
+      "MongoDB",
+      "Firebase",
+    ],
+    liveLink: "https://forumhub-by-mithu9.netlify.app/",
+    githubLink: "https://github.com/MITHU9/forumHub-application",
+    challenges:
+      "Implementing user can votes at a time just ones and deleting post with posts comments and fetch comment for individual post . I used Firebase Authentication and MongoDB for store data . Report and delete comment functionality.",
     improvements:
-      "Every project has some improvements. I will add more features to these projects.",
+      "Future improvements include adding a review system, implementing a notification system, and adding a mobile app.",
+  },
+  {
+    id: 6,
+    title: "TalkyTime - A Chat Application",
+    image: project8,
+    brief: "A chat application built with React,Socket.io Express and Node.js",
+    description:
+      "A platform that allows users to chat with each other. Features include user authentication, single chat, group chat, user-specific data and user can see online users and offline users, user can see typing status of other users, user can see notification of new message, user can see notification of friend request.",
+
+    technologies: [
+      "React",
+      "MaterialUI",
+      "NodeJs",
+      "Express",
+      "MongoDB",
+      "JWT",
+      "Socket.io",
+    ],
+    liveLink: "https://chat-app-by-mithu9.netlify.app/",
+    githubLink: "https://github.com/MITHU9/realtime-chat-app",
+    challenges:
+      "Implementing user authentication and user-specific data was challenging.Socket.io for real time chat and notification system. Redux toolkit for state management.",
+    improvements:
+      "Improve the UI/UX, add more features like video call, voice call, and add a mobile app.",
   },
 ];
 
