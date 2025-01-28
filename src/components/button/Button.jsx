@@ -1,11 +1,15 @@
 import "./style.css";
 
-const Button = ({ text, children }) => {
+const Button = ({ text, liveLink, githubLink, children }) => {
   return (
-    <button className="button flex items-center">
+    <a
+      href={liveLink || githubLink}
+      target="_blank"
+      className="button flex items-center"
+    >
       {" "}
       {children ? children : ""} {text}{" "}
-    </button>
+    </a>
   );
 };
 export default Button;

@@ -102,7 +102,7 @@ const projects = [
       "Firebase",
     ],
     liveLink: "https://forumhub-by-mithu9.netlify.app/",
-    githubLink: "https://github.com/MITHU9/forumHub-application",
+    githubLink: "https://github.com/MITHU9/forum-hub-frontend",
     challenges:
       "Implementing user can votes at a time just ones and deleting post with posts comments and fetch comment for individual post . I used Firebase Authentication and MongoDB for store data . Report and delete comment functionality.",
     improvements:
@@ -347,8 +347,7 @@ export default function Projects() {
                     <div className="flex gap-4 pt-4">
                       <Button
                         text={"Live Demo"}
-                        href={selectedProject.liveLink}
-                        target="_blank"
+                        liveLink={selectedProject.liveLink}
                         rel="noopener noreferrer"
                         className={`inline-flex items-center px-4 py-2 ${
                           darkMode
@@ -360,8 +359,7 @@ export default function Projects() {
                       </Button>
                       <Button
                         text="View Code"
-                        href={selectedProject.githubLink}
-                        target="_blank"
+                        githubLink={selectedProject.githubLink}
                         rel="noopener noreferrer"
                         className={`inline-flex items-center px-4 py-2 border-2 ${
                           darkMode
