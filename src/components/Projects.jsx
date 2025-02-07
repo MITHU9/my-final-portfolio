@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { ExternalLink, Github, X } from "lucide-react";
 import project1 from "/project1.png";
 import project2 from "/project2.png";
@@ -10,28 +10,32 @@ import project8 from "/project8.png";
 
 import { useTheme } from "../context/ThemeContext";
 import Button from "./button/Button";
+import ProjectCard from "./ProjectCard";
+import Lenis from "@studio-freight/lenis";
 
 const projects = [
   {
     id: 1,
-    title: "gadget heaven",
+    title: "Gadget Heaven",
     image: project1,
-    brief: "An e-commerce platform for gadgets built with React and Firebase",
+    brief:
+      "A feature-rich e-commerce platform designed for gadget lovers, built with React and Firebase. It includes user authentication, dynamic product management, shopping cart functionality.",
     description:
-      "This e-commerce platform features user authentication, product management, shopping cart functionality",
+      "This e-commerce platform features user authentication, product management, shopping cart functionality.",
     technologies: ["React", "tailwindCSS", "Firebase"],
     liveLink: "https://gadget-heaven-by-mithu9.netlify.app/",
     githubLink: "https://github.com/MITHU9/gadget-heaven",
     challenges:
       "Implementing user authentication and shopping cart functionality was challenging. I used Firebase Authentication.",
     improvements:
-      "Future improvements include adding a recommendation system, implementing better caching strategies, and adding payment options. And also I will add a backend to this project.",
+      "Future improvements include adding a recommendation system, implementing better caching strategies, and adding payment options. I will also add a backend to this project.",
   },
   {
     id: 2,
     title: "Movie Portal",
     image: project2,
-    brief: "Movie portal built with React and Node.js with MongoDB",
+    brief:
+      "A movie discovery platform that allows users to search for movies, view detailed information, and save favorites. Built with React, Node.js, and MongoDB, it offers a personalized experience with user authentication and a favorites list.",
     description:
       "A platform that allows users to search for movies, view movie details, and add movies to their Favlist. Features include user authentication, and user-specific Favlist.",
     technologies: [
@@ -45,17 +49,18 @@ const projects = [
     liveLink: "https://movie-portal-by-mithu9.netlify.app/",
     githubLink: "https://github.com/MITHU9/movie-portal",
     challenges:
-      "Implementing user authentication and user-specific data was challenging. I used Firebase Authentication and MongoDB for store data .",
+      "Implementing user authentication and handling user-specific data was challenging. I used Firebase Authentication and MongoDB for data storage.",
     improvements:
-      "Future improvements include adding a review system, implementing a notification system, and adding a mobile app.",
+      "Future improvements include adding a review system, implementing a notification system, and developing a mobile app.",
   },
   {
     id: 3,
     title: "Home Repair Service",
     image: project3,
-    brief: "Home repair service platform built with React and Node.js",
+    brief:
+      "A service marketplace connecting homeowners with skilled professionals for home repairs and maintenance. Features include secure authentication, service provider profiles, and an efficient booking system.",
     description:
-      " A platform that connects homeowners with service providers for home repair and maintenance services. Features include user authentication, service provider profiles, and service booking.",
+      "A platform that connects homeowners with service providers for home repair and maintenance services. Features include user authentication, service provider profiles, and service booking.",
     technologies: [
       "React",
       "tailwindCSS",
@@ -69,30 +74,32 @@ const projects = [
     challenges:
       "Working with multiple APIs and creating smooth data visualizations was challenging. I implemented proper error handling and loading states to improve user experience.",
     improvements:
-      "Future improvements include adding a review system, implementing a notification system, and adding a mobile app.",
+      "Future improvements include adding a review system, implementing a notification system, and developing a mobile app.",
   },
   {
     id: 4,
-    title: "youtube clone",
+    title: "YouTube Clone",
     image: project5,
-    brief: "A responsive YouTube clone built with React and YouTube API",
+    brief:
+      "A fully responsive YouTube-like platform where users can browse, watch, and explore videos from different categories. Built with React and the YouTube API, it provides seamless video playback and an engaging UI.",
     description:
-      "A YouTube clone that features video playback,and category wise data fetching, and video recommendation  . The app is responsive and mobile-friendly.",
+      "A YouTube clone that features video playback, category-wise data fetching, and video recommendations. The app is responsive and mobile-friendly.",
     technologies: ["React", "CSS", "YouTube API"],
     liveLink: "https://youtube-clone-by-mithu.netlify.app/",
     githubLink: "https://github.com/MITHU9/youtube-clone-project",
     challenges:
-      "Fetching and displaying data from the YouTube API was challenging. ",
+      "Fetching and displaying data from the YouTube API was challenging.",
     improvements:
-      "Future improvements including search functionality, implementing a notification system, and add backend to this project.",
+      "Future improvements include adding search functionality, implementing a notification system, and integrating a backend.",
   },
   {
     id: 5,
     title: "ForumHub - A Forum Website",
     image: project7,
-    brief: "A forum website built with React and Node.js with MongoDB",
+    brief:
+      "An interactive discussion platform where users can create and join forums, post questions, and engage with the community. It includes authentication, voting, and comment management for a dynamic user experience.",
     description:
-      "A platform that allows users to create and join forums, post questions, and answer questions. Features include user authentication, and user-specific data.",
+      "A platform that allows users to create and join forums, post questions, and answer questions. Features include user authentication and user-specific data.",
     technologies: [
       "React",
       "tailwindCSS",
@@ -104,18 +111,18 @@ const projects = [
     liveLink: "https://forumhub-by-mithu9.netlify.app/",
     githubLink: "https://github.com/MITHU9/forum-hub-frontend",
     challenges:
-      "Implementing user can votes at a time just ones and deleting post with posts comments and fetch comment for individual post . I used Firebase Authentication and MongoDB for store data . Report and delete comment functionality.",
+      "Implementing voting restrictions and managing post deletions with associated comments was challenging. I used Firebase Authentication and MongoDB for data storage, along with features like reporting and comment deletion.",
     improvements:
-      "Future improvements include adding a review system, implementing a notification system, and adding a mobile app.",
+      "Future improvements include adding a review system, implementing a notification system, and creating a mobile app.",
   },
   {
     id: 6,
     title: "TalkyTime - A Chat Application",
     image: project8,
-    brief: "A chat application built with React,Socket.io Express and Node.js",
+    brief:
+      "A real-time chat application featuring private and group chats, online/offline status indicators, typing indicators, and notifications. Built with React, Socket.io, and MongoDB for smooth and instant communication.",
     description:
-      "A platform that allows users to chat with each other. Features include user authentication, single chat, group chat, user-specific data and user can see online users and offline users, user can see typing status of other users, user can see notification of new message, user can see notification of friend request.",
-
+      "A platform that allows users to chat with each other. Features include user authentication, single chat, group chat, user-specific data, and additional real-time features like online status, typing indicators, and notifications.",
     technologies: [
       "React",
       "MaterialUI",
@@ -128,9 +135,9 @@ const projects = [
     liveLink: "https://chat-app-by-mithu9.netlify.app/",
     githubLink: "https://github.com/MITHU9/realtime-chat-app",
     challenges:
-      "Implementing user authentication and user-specific data was challenging.Socket.io for real time chat and notification system. Redux toolkit for state management.",
+      "Implementing real-time messaging and notifications with Socket.io was challenging. Redux Toolkit was used for efficient state management.",
     improvements:
-      "Improve the UI/UX, add more features like video call, voice call, and add a mobile app.",
+      "Future improvements include enhancing UI/UX, adding features like video calls, voice calls, and creating a mobile app.",
   },
 ];
 
@@ -138,18 +145,35 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
   const { darkMode } = useTheme();
 
+  const container = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ["start start", "end end"],
+  });
+
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  });
+
   return (
     <section
       id="projects"
       className={`py-20 ${darkMode ? "bg-gray-800" : "bg-white"}`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div ref={container} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-20 sticky top-20"
         >
           <h2
             className={`text-3xl font-bold ${
@@ -165,64 +189,22 @@ export default function Projects() {
           ></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={` rounded-lg shadow-lg overflow-hidden ${
-                darkMode ? "bg-gray-900" : "bg-white"
-              } 
-              transform transition-all duration-300 ease-in-out hover:scale-105 hover:rotate-2 hover:shadow-2xl hover:translate-y-[-5px] hover:ring-4 hover:ring-blue-500 hover:ring-opacity-50`}
-            >
-              {/* Image Animation on Hover */}
-              <motion.div
-                className="relative h-48"
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.3 }}
-              >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-all duration-300 ease-in-out"
-                />
-              </motion.div>
+        <div className="grid grid-cols-1 gap-8">
+          {projects.map((project, index) => {
+            const targetScale = 1 - (projects.length - index) * 0.05;
 
-              <div className="p-6 relative">
-                <h3
-                  className={`text-xl font-semibold ${
-                    darkMode ? "text-white" : "text-gray-900"
-                  } mb-2 
-                  transition-all duration-300 ease-in-out hover:text-blue-500`}
-                >
-                  {project.title}
-                </h3>
-                <p
-                  className={`text-gray-600 ${
-                    darkMode ? "text-white/50" : ""
-                  } mb-4 
-                  transition-all duration-300 ease-in-out hover:text-gray-700`}
-                >
-                  {project.brief}
-                </p>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setSelectedProject(project)}
-                  className={`inline-flex items-center px-4 py-2 ${
-                    darkMode
-                      ? "bg-blue-500 text-gray-900"
-                      : "bg-blue-600 text-white"
-                  } rounded-lg hover:bg-blue-700 transition-all duration-200 ease-in-out`}
-                >
-                  View Details
-                </motion.button>
-              </div>
-            </motion.div>
-          ))}
+            return (
+              <ProjectCard
+                key={index}
+                setSelectedProject={setSelectedProject}
+                index={index}
+                project={project}
+                progress={scrollYProgress}
+                range={[index * 0.25, 1]}
+                targetScale={targetScale}
+              />
+            );
+          })}
         </div>
 
         <AnimatePresence>

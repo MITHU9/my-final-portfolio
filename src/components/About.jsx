@@ -39,9 +39,9 @@ export default function About() {
             transition={{ duration: 0.5 }}
           >
             <img
-              src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800"
+              src="./about_image.webp"
               alt="Working"
-              className="rounded-lg shadow-lg"
+              className="rounded-lg lg:h-[60vh] shadow-lg"
             />
           </motion.div>
 
@@ -50,17 +50,22 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="space-y-6"
+            className="space-y-6 lg:h-[60vh]"
           >
             <p
               className={`text-gray-600 ${
                 darkMode ? "text-white/50" : "text-gray-600"
               }`}
             >
-              Hello! I`m a passionate Frontend Developer with a keen eye for
-              creating beautiful and functional web experiences. My journey in
-              web development started during my university years, and I`ve been
-              hooked ever since.
+              Hello! I`m a passionate MERN Stack Developer with a keen eye for
+              building scalable, high-performance web applications. With
+              expertise in MongoDB, Express.js, React, and Node.js, I specialize
+              in crafting intuitive, responsive, and dynamic user experiences. I
+              thrive on solving complex problems and transforming ideas into
+              functional, efficient, and elegant digital solutions. My
+              experience spans across full-stack development, RESTful APIs,
+              database design, and cloud deployments, ensuring seamless
+              end-to-end application performance.
             </p>
 
             <p
