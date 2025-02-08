@@ -1,13 +1,30 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
+import { useRef } from "react";
 
-export default function About() {
+const paragraph = `Hello! I'm a passionate MERN Stack Developer with a keen eye for building scalable,high-performance web applications. With expertise in MongoDB,Express.js,React,and Node.js,I specialize in crafting intuitive,responsive,and dynamic user experiences. I thrive on solving complex problems and transforming ideas into functional,efficient,and elegant digital solutions. My experience spans across full-stack development,RESTful APIs,database design,and cloud deployments,ensuring seamless end-to-end application performance.I specialize in building responsive web applications using modern technologies like React,TypeScript,and Tailwind CSS. I love solving complex problems and turning ideas into reality through code.When I'm not coding,you can find me exploring new technologies,contributing to open-source projects,or sharing my knowledge through blog posts and mentoring.`;
+
+export default function About({ scrollY }) {
   const { darkMode } = useTheme();
+  const element = useRef(null);
+
+  const scale = useTransform(scrollY, [0, 0.5], [0.8, 1]);
+  const rotate = useTransform(scrollY, [0, 0.5], [-10, 0]);
+
+  const { scrollYProgress } = useScroll({
+    target: element,
+    offset: ["start 0.9", "start 0.25"],
+  });
+
+  const words = paragraph.split(" ");
 
   return (
-    <section
+    <motion.section
       id="about"
-      className={`py-20 ${darkMode ? "bg-gray-800" : "bg-white"}`}
+      style={{ scale, rotate }}
+      className={`py-20 h-screen mt-8 sticky top-0 ${
+        darkMode ? "bg-gray-800" : "bg-white"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -53,40 +70,25 @@ export default function About() {
             className="space-y-6 lg:h-[60vh]"
           >
             <p
-              className={`text-gray-600 ${
+              ref={element}
+              className={`text-gray-600 flex flex-wrap text-[18px] ${
                 darkMode ? "text-white/50" : "text-gray-600"
               }`}
             >
-              Hello! I`m a passionate MERN Stack Developer with a keen eye for
-              building scalable, high-performance web applications. With
-              expertise in MongoDB, Express.js, React, and Node.js, I specialize
-              in crafting intuitive, responsive, and dynamic user experiences. I
-              thrive on solving complex problems and transforming ideas into
-              functional, efficient, and elegant digital solutions. My
-              experience spans across full-stack development, RESTful APIs,
-              database design, and cloud deployments, ensuring seamless
-              end-to-end application performance.
-            </p>
+              {words.map((word, index) => {
+                const start = index / words.length;
+                const end = start + 1 / words.length;
 
-            <p
-              className={`text-gray-600 ${
-                darkMode ? "text-white/50" : "text-gray-600"
-              }`}
-            >
-              I specialize in building responsive web applications using modern
-              technologies like React, TypeScript, and Tailwind CSS. I love
-              solving complex problems and turning ideas into reality through
-              code.
-            </p>
-
-            <p
-              className={`text-gray-600 ${
-                darkMode ? "text-white/50" : "text-gray-600"
-              }`}
-            >
-              When I`m not coding, you can find me exploring new technologies,
-              contributing to open-source projects, or sharing my knowledge
-              through blog posts and mentoring.
+                return (
+                  <Word
+                    key={index}
+                    range={[start, end]}
+                    progress={scrollYProgress}
+                  >
+                    {word}{" "}
+                  </Word>
+                );
+              })}
             </p>
 
             <div className="pt-4">
@@ -119,6 +121,22 @@ export default function About() {
           </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
+
+const Word = ({ children, range, progress }) => {
+  const opacity = useTransform(progress, range, [0, 1]);
+
+  return (
+    <span className="relative mr-[4px]">
+      <span className="absolute text-left font-semibold opacity-30">
+        {children}
+        &nbsp;
+      </span>
+      <motion.span style={{ opacity }} className="text-gray-400 font-semibold">
+        {children}{" "}
+      </motion.span>
+    </span>
+  );
+};

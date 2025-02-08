@@ -1,12 +1,15 @@
-import { motion } from "framer-motion";
+import { motion, useTransform } from "framer-motion";
 import { Download, Mail } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 import Button2 from "./button/Button2";
 import Button3 from "./button/Button3";
 import Social from "./social-icon/Social";
 
-export default function Hero() {
+export default function Hero({ scrollYProgress }) {
   const { darkMode } = useTheme();
+
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, -10]);
 
   const name = "Shahariar Mithu";
 
@@ -28,9 +31,10 @@ export default function Hero() {
   };
 
   return (
-    <section
+    <motion.section
       id="home"
-      className={`min-h-screen flex items-center justify-center ${
+      style={{ scale, rotate }}
+      className={`min-h-screen sticky top-0 flex items-center justify-center ${
         darkMode ? "bg-gray-900" : "bg-gray-50"
       }`}
     >
@@ -46,7 +50,7 @@ export default function Hero() {
                 darkMode ? "text-gray-200" : "text-gray-900"
               } mb-4`}
             >
-              Hi, I`m{" "}
+              Hi, I&apos;m{" "}
               <motion.span
                 className="text-blue-600 inline-flex"
                 variants={containerVariants}
@@ -131,6 +135,6 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

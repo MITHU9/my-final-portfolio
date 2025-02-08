@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useTransform } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
 import {
   FaCss3Alt,
@@ -54,8 +54,13 @@ const skills = [
   },
 ];
 
-export default function Skills() {
+export default function Skills({ scrollYProgress }) {
   const { darkMode } = useTheme();
+
+  console.log(scrollYProgress);
+
+  const scale = useTransform(scrollYProgress, [0.5, 1], [0.8, 1]);
+  const rotate = useTransform(scrollYProgress, [0.5, 1], [-10, 0]);
 
   const tools = [
     { name: "React", icon: <FaReact size={32} /> },
@@ -76,9 +81,12 @@ export default function Skills() {
   ];
 
   return (
-    <section
+    <motion.section
       id="skills"
-      className={`py-20 ${darkMode ? "bg-gray-900" : "bg-gray-50"}`}
+      style={{ scale, rotate }}
+      className={`py-20 sticky top-0 min-h-screen ${
+        darkMode ? "bg-gray-900" : "bg-gray-50"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -215,6 +223,6 @@ export default function Skills() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
