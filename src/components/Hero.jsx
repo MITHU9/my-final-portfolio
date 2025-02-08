@@ -89,7 +89,7 @@ export default function Hero() {
                 text="Download Resume"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="/resume.pdf"
+                href="/resume_mithu10.pdf"
                 download
               >
                 <Button2 text={"Download Resume"}>

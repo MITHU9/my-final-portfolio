@@ -39,7 +39,7 @@ export default function About() {
             transition={{ duration: 0.5 }}
           >
             <img
-              src="./about_image.webp"
+              src="/about_image.webp"
               alt="Working"
               className="rounded-lg lg:h-[60vh] shadow-lg"
             />
