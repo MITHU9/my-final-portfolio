@@ -7,7 +7,7 @@ export const useTheme = () => {
 };
 
 const ThemeProvider = ({ children }) => {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState("true");
 
   useEffect(() => {
     const savedDarkMode = localStorage.getItem("darkMode") === "true";

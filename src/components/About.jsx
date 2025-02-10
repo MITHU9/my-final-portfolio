@@ -8,8 +8,8 @@ export default function About({ scrollY }) {
   const { darkMode } = useTheme();
   const element = useRef(null);
 
-  const scale = useTransform(scrollY, [0, 0.5], [0.8, 1]);
-  const rotate = useTransform(scrollY, [0, 0.5], [-10, 0]);
+  const scale = useTransform(scrollY, [0, 0.5, 1], [0.8, 1, 0.8]);
+  const rotate = useTransform(scrollY, [0, 0.5, 1], [-10, 0, -10]);
 
   const { scrollYProgress } = useScroll({
     target: element,
@@ -36,7 +36,7 @@ export default function About({ scrollY }) {
         >
           <h2
             className={`text-3xl font-bold ${
-              darkMode ? "text-gray-200" : "text-gray-900"
+              darkMode ? "text-gray-200" : "text-gray-700"
             }`}
           >
             About Me
@@ -72,7 +72,7 @@ export default function About({ scrollY }) {
             <p
               ref={element}
               className={`text-gray-600 flex flex-wrap text-[18px] ${
-                darkMode ? "text-white/50" : "text-gray-600"
+                darkMode ? "text-white/70" : "text-gray-300"
               }`}
             >
               {words.map((word, index) => {

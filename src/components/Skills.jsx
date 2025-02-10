@@ -57,10 +57,10 @@ const skills = [
 export default function Skills({ scrollYProgress }) {
   const { darkMode } = useTheme();
 
-  console.log(scrollYProgress);
+  //console.log(scrollYProgress);
 
   const scale = useTransform(scrollYProgress, [0.5, 1], [0.8, 1]);
-  const rotate = useTransform(scrollYProgress, [0.5, 1], [-10, 0]);
+  const rotate = useTransform(scrollYProgress, [0.5, 1], [5, 0]);
 
   const tools = [
     { name: "React", icon: <FaReact size={32} /> },

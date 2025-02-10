@@ -34,7 +34,7 @@ export default function Navbar() {
       animate={{ y: 0 }}
       className={`fixed w-full z-50 transition-all duration-300 ${
         scrolled ? " shadow-lg" : " "
-      } ${darkMode ? "text-white" : "text-black "}`}
+      } ${darkMode ? "text-white bg-gray-800" : " text-black "}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -144,7 +144,7 @@ export default function Navbar() {
               offset={-70}
               duration={500}
               activeClass="active"
-              className="cursor-pointer block px-3 py-2 flex items-center space-x-2 rounded-md text-base font-medium hover:text-blue-600 transition-colors"
+              className="cursor-pointer px-3 py-2 flex items-center space-x-2 rounded-md text-base font-medium hover:text-blue-600 transition-colors"
               onClick={() => setIsOpen(false)}
             >
               <span>{item.icon}</span>
