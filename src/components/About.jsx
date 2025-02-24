@@ -8,8 +8,8 @@ export default function About({ scrollY }) {
   const { darkMode } = useTheme();
   const element = useRef(null);
 
-  const scale = useTransform(scrollY, [0, 0.5, 1], [0.8, 1, 0.8]);
-  const rotate = useTransform(scrollY, [0, 0.5, 1], [-10, 0, -10]);
+  const scale = useTransform(scrollY, [0, 0.5], [0.8, 1]);
+  const rotate = useTransform(scrollY, [0, 0.5], [10, 0]);
 
   const { scrollYProgress } = useScroll({
     target: element,
@@ -21,8 +21,15 @@ export default function About({ scrollY }) {
   return (
     <motion.section
       id="about"
-      style={{ scale, rotate }}
-      className={`py-20 h-screen mt-8 sticky top-0 ${
+      style={
+        window.innerWidth >= 768
+          ? {
+              scale,
+              rotate,
+            }
+          : ""
+      }
+      className={`py-20 opacity-100 md:h-screen md:mt-8 md:sticky md:top-0 ${
         darkMode ? "bg-gray-800" : "bg-white"
       }`}
     >

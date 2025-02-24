@@ -57,10 +57,8 @@ const skills = [
 export default function Skills({ scrollYProgress }) {
   const { darkMode } = useTheme();
 
-  //console.log(scrollYProgress);
-
-  const scale = useTransform(scrollYProgress, [0.5, 1], [0.8, 1]);
-  const rotate = useTransform(scrollYProgress, [0.5, 1], [5, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [5, 0]);
 
   const tools = [
     { name: "React", icon: <FaReact size={32} /> },
@@ -83,8 +81,15 @@ export default function Skills({ scrollYProgress }) {
   return (
     <motion.section
       id="skills"
-      style={{ scale, rotate }}
-      className={`py-20 sticky top-0 min-h-screen ${
+      style={
+        window.innerWidth >= 768
+          ? {
+              scale,
+              rotate,
+            }
+          : ""
+      }
+      className={`py-20 md:sticky md:top-0 min-h-screen ${
         darkMode ? "bg-gray-900" : "bg-gray-50"
       }`}
     >

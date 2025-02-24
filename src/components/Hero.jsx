@@ -33,12 +33,16 @@ export default function Hero({ scrollYProgress }) {
   return (
     <motion.section
       id="home"
-      style={{
-        scale,
-        rotate,
-        backgroundImage: `${darkMode ? "url(/bg-image.jpg)" : "none"}`,
-      }}
-      className={`min-h-screen sticky top-0 flex items-center justify-center ${
+      style={
+        window.innerWidth >= 768
+          ? {
+              scale,
+              rotate,
+              backgroundImage: `${darkMode ? "url(/bg-image.jpg)" : "none"}`,
+            }
+          : { backgroundImage: `${darkMode ? "url(/bg-image.jpg)" : "none"}` }
+      }
+      className={`min-h-screen md:sticky md:top-0 flex items-center justify-center ${
         darkMode ? "bg-gray-900" : "bg-gray-50"
       }`}
     >
@@ -97,7 +101,7 @@ export default function Hero({ scrollYProgress }) {
                 text="Download Resume"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="/resume_mithu10.pdf"
+                href="/my_resume.pdf"
                 download
               >
                 <Button2 text={"Download Resume"}>
