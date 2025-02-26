@@ -7,6 +7,7 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import { useRef } from "react";
 import { useScroll } from "framer-motion";
+import Cylinder from "./components/threejs/Cylinder";
 
 function App() {
   const container = useRef(null);
@@ -22,6 +23,7 @@ function App() {
       <Hero scrollYProgress={scrollYProgress} />
       <About scrollY={scrollYProgress} />
       <Skills scrollYProgress={scrollYProgress} />
+      <Cylinder />
       <Projects />
       <Contact />
       <Footer />
