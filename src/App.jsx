@@ -18,7 +18,7 @@ function App() {
   });
 
   return (
-    <div ref={container} className="h-[300vh]">
+    <div ref={container} className="h-[300vh] overflow-x-clip">
       <Navbar />
       <Hero scrollYProgress={scrollYProgress} />
       <About scrollY={scrollYProgress} />
