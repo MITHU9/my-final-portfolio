@@ -4,6 +4,7 @@ import { useTheme } from "../context/ThemeContext";
 import Button2 from "./button/Button2";
 import Button3 from "./button/Button3";
 import Social from "./social-icon/Social";
+import CircularText from "./animate/CircularText";
 
 export default function Hero({ scrollYProgress }) {
   const { darkMode } = useTheme();
@@ -156,6 +157,22 @@ export default function Hero({ scrollYProgress }) {
               </div>
             </motion.div>
           </motion.div>
+        </div>
+        <div className="hidden absolute top-5 -right-8 md:flex justify-center items-center">
+          <CircularText
+            text="REACT*JAVASCRIPT*NEXTJS*NODEJS*"
+            onHover="speedUp"
+            spinDuration={18}
+            className="custom-class"
+          />
+        </div>
+        <div className="hidden absolute top-5 -left-8 md:flex justify-center items-center">
+          <CircularText
+            text="MERN*DEVELOPER*ENTHUSIAST*"
+            onHover="speedUp"
+            spinDuration={18}
+            className="custom-class"
+          />
         </div>
       </div>
     </motion.section>

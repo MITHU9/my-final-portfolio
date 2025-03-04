@@ -2,6 +2,7 @@
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import Scene from "./Scene";
+import MagnetLines from "../animate/MagnetLines";
 
 const Cylinder = () => {
   return (
@@ -17,13 +18,16 @@ const Cylinder = () => {
           <h1 className="text-center text-white text-2xl font-bold">
             3D Portfolio Showcase
           </h1>
-          <p className="text-center text-gray-300 mt-4">
-            Welcome to my interactive 3D portfolio! This web experience
-            showcases five unique projects, each presented in a stunning 3D
-            environment using Three.js. The user can explore each project from
-            different angles, interact with dynamic 3D objects, and fully
-            immerse themselves in the creativity behind each project.
-          </p>
+          <MagnetLines
+            rows={7}
+            columns={9}
+            containerSize="60vmin"
+            lineColor="tomato"
+            lineWidth="0.8vmin"
+            lineHeight="5vmin"
+            baseAngle={0}
+            style={{ margin: "2rem auto" }}
+          />
         </div>
       </div>
     </div>
