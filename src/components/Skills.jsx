@@ -3,10 +3,12 @@ import { useTheme } from "../context/ThemeContext";
 import {
   FaCss3Alt,
   FaDocker,
+  FaFigma,
   FaGitAlt,
   FaHtml5,
   FaJs,
   FaNodeJs,
+  FaPython,
   FaReact,
 } from "react-icons/fa";
 import {
@@ -17,6 +19,8 @@ import {
   SiMongodb,
   SiPostgresql,
   SiCplusplus,
+  SiDjango,
+  SiPostman,
 } from "react-icons/si";
 
 import { FaCuttlefish } from "react-icons/fa";
@@ -29,18 +33,20 @@ const skills = [
       { name: "HTML", level: 90 },
       { name: "React", level: 90 },
       { name: "JavaScript", level: 90 },
-      { name: "TypeScript", level: 50 },
+      { name: "TypeScript", level: 70 },
       { name: "Tailwind CSS", level: 90 },
-      { name: "Next.js", level: 50 },
+      { name: "Next.js", level: 70 },
     ],
   },
   {
     category: "Backend",
     items: [
-      { name: "Node.js", level: 60 },
-      { name: "Express", level: 60 },
-      { name: "MongoDB", level: 65 },
-      { name: "PostgreSQL", level: 30 },
+      { name: "Python", level: 80 },
+      { name: "Django", level: 50 },
+      { name: "Node.js", level: 70 },
+      { name: "Express", level: 80 },
+      { name: "MongoDB", level: 85 },
+      { name: "PostgreSQL", level: 60 },
     ],
   },
   {
@@ -50,6 +56,7 @@ const skills = [
       { name: "Docker", level: 25 },
       { name: "VS Code", level: 90 },
       { name: "Figma", level: 65 },
+      { name: "Postman", level: 80 },
     ],
   },
 ];
@@ -76,6 +83,10 @@ export default function Skills({ scrollYProgress }) {
     { name: "PostgreSQL", icon: <SiPostgresql size={32} /> },
     { name: "C", icon: <FaCuttlefish size={32} /> },
     { name: "C++", icon: <SiCplusplus size={32} /> },
+    { name: "Python", icon: <FaPython size={32} /> },
+    { name: "Django", icon: <SiDjango size={32} /> },
+    { name: "Figma", icon: <FaFigma size={32} /> },
+    { name: "Postman", icon: <SiPostman size={32} /> },
   ];
 
   return (
